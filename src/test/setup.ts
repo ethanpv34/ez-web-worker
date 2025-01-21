@@ -42,8 +42,9 @@ class WorkerMock implements Worker {
           workerFunction(workerScope);
           
           workerScope.postMessage({ type: 'result', data: message * 2 });
-        } catch (error) {
+        } catch (err) {
           if (this.onmessage) {
+            const error = err as Error;
             this.onmessage(new MessageEvent('message', {
               data: { type: 'error', error: error.message }
             }));
