@@ -21,7 +21,7 @@
     "hook",
     "typescript"
   ],
-  "author": "Your Name",
+  "author": "Ethan Johnson",
   "license": "MIT",
   "peerDependencies": {
     "react": ">=16.8.0"
