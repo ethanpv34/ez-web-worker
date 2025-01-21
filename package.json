@@ -28,21 +28,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/react-workflow.git"
+    "url": "https://github.com/ethanpv34/react-workflow.git"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
-    "@testing-library/react": "^16.2.0",
+    "@testing-library/react": "^12.1.5",
     "@testing-library/react-hooks": "^8.0.1",
     "@types/node": "^22.10.7",
-    "@types/react": "^19.0.7",
+    "@types/react": "^17.0.75",
     "@types/testing-library__react": "^10.2.0",
     "@types/testing-library__react-hooks": "^4.0.0",
     "jsdom": "^26.0.0",
-    "react": "^19.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rimraf": "^5.0.10",
     "rollup": "^4.31.0",
     "tslib": "^2.8.1",
     "typescript": "^5.7.3",
