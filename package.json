@@ -1,5 +1,5 @@
 {
-  "name": "react-workflow",
+  "name": "@ethanpv34/react-workflow",
   "version": "0.1.0",
   "description": "React hook for easy Web Worker integration",
   "main": "dist/index.js",
