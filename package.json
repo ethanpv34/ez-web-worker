@@ -1,0 +1,51 @@
+{
+  "name": "react-workflow",
+  "version": "0.1.0",
+  "description": "React hook for easy Web Worker integration",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "vitest",
+    "clean": "rimraf dist",
+    "prepare": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "react",
+    "web-worker",
+    "hook",
+    "typescript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/react-workflow.git"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/react-hooks": "^8.0.1",
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.7",
+    "@types/testing-library__react": "^10.2.0",
+    "@types/testing-library__react-hooks": "^4.0.0",
+    "jsdom": "^26.0.0",
+    "react": "^19.0.0",
+    "rollup": "^4.31.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.3"
+  }
+}
