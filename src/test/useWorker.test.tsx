@@ -23,7 +23,7 @@ describe('useWorker', () => {
     });
 
     expect(result.current.status).toBe('running');
-
+    
     await waitForNextUpdate();
 
     expect(result.current.status).toBe('done');
