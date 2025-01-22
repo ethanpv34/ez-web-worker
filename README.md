@@ -1,4 +1,4 @@
-# react-workflow
+# ez-web-worker
 
 A lightweight, type-safe React hook for seamlessly integrating Web Workers into your React applications. Run expensive computations off the main thread without managing worker files or dealing with complex worker setup.
 
@@ -15,13 +15,13 @@ A lightweight, type-safe React hook for seamlessly integrating Web Workers into 
 ## Installation
 
 ```bash
-npm install @ethanpv34/react-workflow
+npm install ez-web-worker
 ```
 
 ## Basic Usage
 
 ```typescript
-import { useWorker } from '@ethanpv34/react-workflow';
+import { useWorker } from 'ez-web-worker';
 
 function MyComponent() {
   const { run, cancel, result, status, error } = useWorker((input: number) => {
