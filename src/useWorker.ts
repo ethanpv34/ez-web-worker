@@ -62,13 +62,8 @@ export function useWorker<TArgs, TResult>(
       });
     };
 
-    // Handle transferables if option is enabled
-    if (options.transferable && args instanceof ArrayBuffer) {
-      brokerRef.current.run(args, [args]);
-    } else {
-      brokerRef.current.run(args);
-    }
-  }, [options.transferable]);
+    brokerRef.current.run(args);
+  }, []);
 
   const cancel = useCallback(() => {
     brokerRef.current?.terminate();
