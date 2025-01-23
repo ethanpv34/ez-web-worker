@@ -45,6 +45,58 @@ function MyComponent() {
 }
 ```
 
+## Non-React Usage
+
+You can also use the worker functionality without React using the `createWorker` function:
+
+```typescript
+import { createWorker } from 'ez-web-worker';
+
+// Create a worker instance
+const worker = createWorker((input: number) => {
+  // This code runs in a Web Worker
+  let total = 0;
+  for (let i = 0; i < 1e8; i++) {
+    total += (i * input) % 1234567;
+  }
+  return total;
+});
+
+// Run the worker
+worker.run(42)
+  .then(result => console.log('Result:', result))
+  .catch(error => console.error('Error:', error));
+
+// Clean up when done
+worker.terminate();
+```
+
+### Usage with TanStack Query
+
+```typescript
+import { createWorker } from 'ez-web-worker';
+import { useQuery } from '@tanstack/react-query';
+
+const computationWorker = createWorker((input: number) => {
+  // Your heavy computation here
+  return input * 2;
+});
+
+function MyComponent() {
+  const { data, isLoading } = useQuery({
+    queryKey: ['computation', 42],
+    queryFn: () => computationWorker.run(42)
+  });
+
+  // Don't forget to clean up
+  useEffect(() => {
+    return () => computationWorker.terminate();
+  }, []);
+
+  return isLoading ? <div>Loading...</div> : <div>Result: {data}</div>;
+}
+```
+
 ## API Reference
 
 ```typescript

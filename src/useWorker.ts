@@ -20,32 +20,36 @@ export function useWorker<TArgs, TResult>(
 
   const brokerRef = useRef<WorkerBroker<TArgs, TResult> | null>(null);
 
-  // Initialize the worker broker
   useEffect(() => {
+    console.log('Creating new worker broker');
     brokerRef.current = new WorkerBroker<TArgs, TResult>(workerFn);
-    
     return () => {
+      console.log('Cleaning up worker broker');
       brokerRef.current?.terminate();
     };
   }, [workerFn]);
 
   const run = useCallback((args: TArgs) => {
+    console.log('Running worker with args:', args);
     if (!brokerRef.current) return;
 
     setState(prev => ({ ...prev, status: 'running', error: null }));
     
-    const worker = brokerRef.current.createWorker();
+    const worker = brokerRef.current.getWorker();
     
     worker.onmessage = (e: MessageEvent<WorkerMessage<TResult>>) => {
+      console.log('Received message from worker:', e.data);
       const { type, data, error } = e.data;
       
       if (type === 'result') {
+        console.log('Setting done state with result:', data);
         setState({
           status: 'done',
           result: data as TResult,
           error: null,
         });
       } else if (type === 'error') {
+        console.log('Setting error state:', error);
         setState({
           status: 'error',
           result: null,
@@ -55,6 +59,7 @@ export function useWorker<TArgs, TResult>(
     };
 
     worker.onerror = (error) => {
+      console.log('Worker error:', error);
       setState({
         status: 'error',
         result: null,
@@ -77,7 +82,7 @@ export function useWorker<TArgs, TResult>(
   // Handle Suspense integration
   if (options.suspense && state.status === 'running') {
     throw new Promise((resolve) => {
-      const worker = brokerRef.current?.createWorker();
+      const worker = brokerRef.current?.getWorker();
       if (worker) {
         worker.onmessage = resolve;
       }
