@@ -1,10 +1,17 @@
 {
   "name": "ez-web-worker",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "React hook for easy Web Worker integration",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/esm/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
